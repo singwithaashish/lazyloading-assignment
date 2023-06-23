@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import LabeledInput from "../components/LabeledInput";
+import { auth } from "../firebase/config";
+import { signUpWithFirebase } from "../utils/authentication";
 
 export default function SignupPage() {
   const [name, setName] = useState<string>("");
@@ -7,23 +9,26 @@ export default function SignupPage() {
   const [password, setPassword] = useState<string>("");
   const [confirmPass, setConfirmPass] = useState<string>("");
 
-  useEffect(() => {
-    if (window.localStorage.getItem("token")) {
-      window.location.href = "/";
-    }
-  }, []);
+  // useEffect(() => {
+  //   // if user is already logged in, redirect to home page
+  //   if (auth.currentUser) {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setEmail(email?.trim());
-    if (!email || !password) return;
-    const encryptedPassword = btoa(password);
-    localStorage.setItem("token", encryptedPassword);
-    window.location.href = "/";
+    if (!email || !password || !name) return;
+    const user = await signUpWithFirebase(email, password, name);
+    if (user) {
+      console.log(user);  
+      window.location.href = "/";
+    }
   };
   return (
     <div className="flex flex-col h-screen justify-center items-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-      <form className="flex flex-col p-5 rounded bg-white">
+      <form className="flex flex-col p-5 rounded bg-white" onSubmit={handleSubmit}>
         <h1
           className="text-2xl font-bold mb-4 text-center text-primary"      
         >

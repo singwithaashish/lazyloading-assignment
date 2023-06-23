@@ -8,11 +8,17 @@ import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB4NcZdW7q32xZ1saOH7sfPXNojD0D1A10",
+
   authDomain: "testing-apps-8af7f.firebaseapp.com",
+
   projectId: "testing-apps-8af7f",
+
   storageBucket: "testing-apps-8af7f.appspot.com",
+
   messagingSenderId: "118120186393",
-  appId: "1:118120186393:web:21b4c95ca5dcbda44ee088",
+
+  appId: "1:118120186393:web:21b4c95ca5dcbda44ee088"
+
 };
 
 // Initialize Firebase

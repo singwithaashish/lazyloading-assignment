@@ -1,7 +1,8 @@
+import { signoutWithFirebase } from "../utils/authentication";
+
 export default function Header() {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
+  const handleLogout = async () => {
+    await signoutWithFirebase();
   };
   return (
     <div className="flex justify-between items-center py-4 px-8 bg-white shadow-md sticky top-0 z-50">

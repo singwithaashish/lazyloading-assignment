@@ -11,7 +11,6 @@ export default function HomePage() {
   const [hasMore, setHasMore] = useState(false);
 
 
-  const cardStyle = "mb-4 bg-white shadow-md rounded-lg p-4 w-80";
 
   useEffect(() => {
     setLoading(true);
@@ -55,9 +54,7 @@ export default function HomePage() {
       {data.map((item : Passenger, index : number) => {
         if (data.length === index + 1) {
             // this is the last data element so we add a ref to it to track when user reaches end of page
-          return (
-            <PassengerCard passenger={item} key={item._id} ref={lastDataElementRef} />
-          );
+          return <PassengerCard passenger={item} key={item._id} ref={lastDataElementRef} />;
         } else {
           return <PassengerCard passenger={item} key={item._id} />;
         }
