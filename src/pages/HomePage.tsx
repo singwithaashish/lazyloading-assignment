@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { APIResponse, Passenger } from "../typings";
 import PassengerCard from "../components/PassengerCard";
+import Header from "../components/Header";
 
 export default function HomePage() {
   const [data, setData] = useState<Passenger[]>([]);
@@ -48,7 +49,9 @@ export default function HomePage() {
   );
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen w-screen bg-gray-200 text-gray-900 font-mono">
+    <>
+    <Header/>
+    <div className="flex pt-5 flex-col justify-center items-center min-h-screen w-screen bg-gray-200 text-gray-900 font-mono">
       {data.map((item : Passenger, index : number) => {
         if (data.length === index + 1) {
             // this is the last data element so we add a ref to it to track when user reaches end of page
@@ -62,5 +65,6 @@ export default function HomePage() {
       <div>{loading && "Loading..."}</div>
       <div>{error && "Error"}</div>
     </div>
+    </>
   );
 }
