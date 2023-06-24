@@ -52,6 +52,8 @@ const AirlineInfo = ({ airline }: AirlineInfoProps) => {
         <span className="text-sm text-gray-500">Website:</span>
         <a
           href={airline.website}
+          target="_blank"
+          rel="noreferrer"
           className="text-sm text-blue-500 hover:text-blue-600 duration-150"
         >
           {airline.website}

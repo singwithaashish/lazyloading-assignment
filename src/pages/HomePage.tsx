@@ -21,7 +21,7 @@ export default function HomePage() {
         setHasMore(res.data.length > 0);
         setLoading(false);
       })
-      .catch((e) => {
+      .catch(() => {
         setError(true);
         setLoading(false);
       });
@@ -36,9 +36,11 @@ export default function HomePage() {
       // if there is an observer already, disconnect it
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
+        // if the last data element is visible, load more data
         if (entries[0].isIntersecting && hasMore) {
           setPage((prevPage) => prevPage + 1);
         }
+        
       });
       if (node) observer.current.observe(node);
     },
@@ -50,8 +52,8 @@ export default function HomePage() {
       <Header />
       <div className="flex pt-5 flex-col justify-center items-center min-h-screen w-screen bg-gray-200 text-gray-900 font-mono">
         {data.map((item: Passenger, index: number) => {
-          if (data.length === index + 1) {
-            // this is the last data element so we add a ref to it to track when user reaches end of page
+          if (data.length - index == 2) {
+            // this is the second last data element so we add a ref to it to track when user reaches almost end of page
             return (
               <PassengerCard
                 passenger={item}
