@@ -33,21 +33,13 @@ const signUpWithFirebase = async (
   }
 };
 
-const changePasswordWithFirebase = async (email: string) => {
-  try {
-    const user = await sendPasswordResetEmail(auth, email);
-    return user;
-  } catch (error) {
-    alert(error);
-    return error;
-  }
-};
+
 
 const updatePasswordWithFirebase = async (password: string) => {
   try {
     if (!auth.currentUser) throw new Error("No user is logged in");
-    const user = await updatePassword(auth.currentUser, password);
-    return user;
+    await updatePassword(auth.currentUser, password);
+    return true;
   } catch (error) {
     alert(error);
     return error;
@@ -63,4 +55,4 @@ const signoutWithFirebase = async () => {
     }
 }
 
-export { loginWithFirebase, signUpWithFirebase, changePasswordWithFirebase, updatePasswordWithFirebase, signoutWithFirebase };
+export { loginWithFirebase, signUpWithFirebase, updatePasswordWithFirebase, signoutWithFirebase };

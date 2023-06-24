@@ -17,6 +17,12 @@ export default function Header() {
         </span>
       </div>
       <div className="flex items-center gap-x-3">
+        <button 
+          onClick={() => window.location.href = "/reset-password"}
+          className="px-4 py-2 bg-primary text-white font-semibold rounded-lg duration-200 shadow-md hover:bg-hover"
+        >
+          Change Password
+        </button>
         <button
           onClick={handleLogout}
           className="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg duration-200 shadow-md hover:bg-red-700"

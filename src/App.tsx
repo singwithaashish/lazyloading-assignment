@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFoundPage from './pages/NotFoundPage'
+import ResetPassword from './pages/ResetPassword'
 
 
 function App() {
@@ -14,6 +15,11 @@ function App() {
         <Route path="/" element={
           <ProtectedRoute>
             <HomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/reset-password" element={
+          <ProtectedRoute>
+            <ResetPassword/>
           </ProtectedRoute>
         } />
         <Route path="/login" element={<LoginPage/>} />
