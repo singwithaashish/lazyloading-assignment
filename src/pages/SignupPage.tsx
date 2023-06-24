@@ -19,10 +19,16 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setEmail(email?.trim());
-    if (!email || !password || !name) return;
+    if (!email || !password || !name) {
+      alert("Please enter email, name and password");
+      return;
+    }
+    if (password !== confirmPass) {
+      alert("Passwords do not match");
+      return;
+    }
     const user = await signUpWithFirebase(email, password, name);
     if (user) {
-      console.log(user);  
       window.location.href = "/";
     }
   };

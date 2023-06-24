@@ -14,7 +14,10 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setEmail(email?.trim());
-    if (!email || !password) return;
+    if (!email || !password){
+      alert("Please enter email and password");
+      return;
+    }
     const user = await loginWithFirebase(email, password);
     if (user) {
       window.location.href = "/";
