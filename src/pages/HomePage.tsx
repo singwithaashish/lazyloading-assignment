@@ -56,7 +56,7 @@ export default function HomePage() {
             // this is the last data element so we add a ref to it to track when user reaches end of page
           return <PassengerCard passenger={item} key={item._id} ref={lastDataElementRef} />;
         } else {
-          return <PassengerCard passenger={item} key={item._id} />;
+          return <PassengerCard passenger={item} key={item._id+index.toString()} />;
         }
       })}
       <div>{loading && "Loading..."}</div>
