@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { APIResponse, Passenger } from "../typings";
-import PassengerCard from "../components/PassengerCard";
-import Header from "../components/Header";
+import PassengerCard from "../components/ui/PassengerCard";
+import Header from "../components/layout/Header";
 
 export default function HomePage() {
   const [data, setData] = useState<Passenger[]>([]);
@@ -55,7 +55,7 @@ export default function HomePage() {
             return (
               <PassengerCard
                 passenger={item}
-                key={item._id}
+                key={item._id+index.toString()}
                 ref={lastDataElementRef}
               />
             );

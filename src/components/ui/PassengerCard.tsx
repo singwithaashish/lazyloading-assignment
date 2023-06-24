@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { Airline, Passenger } from "../typings";
+import { Airline, Passenger } from "../../typings";
 
 interface PassengerProps {
   passenger: Passenger;

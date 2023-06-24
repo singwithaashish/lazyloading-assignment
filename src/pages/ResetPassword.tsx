@@ -1,5 +1,5 @@
 import React from 'react'
-import LabeledInput from '../components/LabeledInput'
+import LabeledInput from '../components/ui/LabeledInput'
 import { updatePasswordWithFirebase } from '../utils/authentication';
 
 export default function ResetPassword() {

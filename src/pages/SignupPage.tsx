@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LabeledInput from "../components/LabeledInput";
+import LabeledInput from "../components/ui/LabeledInput";
 import { auth } from "../firebase/config";
 import { signUpWithFirebase } from "../utils/authentication";
 

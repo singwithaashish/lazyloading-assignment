@@ -1,4 +1,4 @@
-import { signoutWithFirebase } from "../utils/authentication";
+import { signoutWithFirebase } from "../../utils/authentication";
 
 export default function Header() {
   const handleLogout = async () => {
