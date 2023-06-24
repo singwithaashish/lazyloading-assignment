@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LabeledInput from "../components/ui/LabeledInput";
 import { loginWithFirebase } from "../utils/authentication";
-import { auth } from "../firebase/config";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");

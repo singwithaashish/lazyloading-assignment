@@ -1,6 +1,5 @@
 import {
-    createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updatePassword,
   updateProfile,
@@ -33,8 +32,6 @@ const signUpWithFirebase = async (
   }
 };
 
-
-
 const updatePasswordWithFirebase = async (password: string) => {
   try {
     if (!auth.currentUser) throw new Error("No user is logged in");
@@ -47,12 +44,17 @@ const updatePasswordWithFirebase = async (password: string) => {
 };
 
 const signoutWithFirebase = async () => {
-    try {
-        await auth.signOut();
-    } catch (error) {
-        alert(error);
-        return error;
-    }
-}
+  try {
+    await auth.signOut();
+  } catch (error) {
+    alert(error);
+    return error;
+  }
+};
 
-export { loginWithFirebase, signUpWithFirebase, updatePasswordWithFirebase, signoutWithFirebase };
+export {
+  loginWithFirebase,
+  signUpWithFirebase,
+  updatePasswordWithFirebase,
+  signoutWithFirebase,
+};
