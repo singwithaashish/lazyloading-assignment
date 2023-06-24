@@ -6,19 +6,19 @@ import { auth } from "../firebase/config";
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    // console.log(auth.currentUser?.email);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     setEmail(email?.trim());
     if (!email || !password){
       alert("Please enter email and password");
       return;
     }
     const user = await loginWithFirebase(email, password);
+    setLoading(false);
     if (user) {
       window.location.href = "/";
     }
@@ -49,7 +49,7 @@ export default function LoginPage() {
             type="submit"
             className="w-full bg-primary hover:bg-hover duration-150 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Sign In
+            {loading? "Logging in..." : "Sign In"}
           </button>
           <p className="text-center text-gray-500 text-xs mt-3">
             New here?{" "}

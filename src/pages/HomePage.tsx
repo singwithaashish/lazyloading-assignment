@@ -10,8 +10,6 @@ export default function HomePage() {
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(false);
 
-
-
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -29,13 +27,13 @@ export default function HomePage() {
       });
   }, [page]);
 
-  //   using this instead of scroll listener because scroll listener can trigger many times per second and runs on the main thread which can cause jank when data is large and user is scrolling fast
+  // using this instead of scroll listener because scroll listener can trigger many times per second and runs on the main thread which can cause jank when data is large and user is scrolling fast
 
   const observer = useRef<IntersectionObserver | null>(null);
   const lastDataElementRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (loading) return;
-    //   if there is an observer already, disconnect it
+      // if there is an observer already, disconnect it
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
@@ -49,19 +47,30 @@ export default function HomePage() {
 
   return (
     <>
-    <Header/>
-    <div className="flex pt-5 flex-col justify-center items-center min-h-screen w-screen bg-gray-200 text-gray-900 font-mono">
-      {data.map((item : Passenger, index : number) => {
-        if (data.length === index + 1) {
+      <Header />
+      <div className="flex pt-5 flex-col justify-center items-center min-h-screen w-screen bg-gray-200 text-gray-900 font-mono">
+        {data.map((item: Passenger, index: number) => {
+          if (data.length === index + 1) {
             // this is the last data element so we add a ref to it to track when user reaches end of page
-          return <PassengerCard passenger={item} key={item._id} ref={lastDataElementRef} />;
-        } else {
-          return <PassengerCard passenger={item} key={item._id+index.toString()} />;
-        }
-      })}
-      <div>{loading && "Loading..."}</div>
-      <div>{error && "Error"}</div>
-    </div>
+            return (
+              <PassengerCard
+                passenger={item}
+                key={item._id}
+                ref={lastDataElementRef}
+              />
+            );
+          } else {
+            return (
+              <PassengerCard
+                passenger={item}
+                key={item._id + index.toString()}
+              />
+            );
+          }
+        })}
+        <div>{loading && "Loading..."}</div>
+        <div>{error && "Error"}</div>
+      </div>
     </>
   );
 }
