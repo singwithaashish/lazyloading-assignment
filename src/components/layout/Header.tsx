@@ -5,7 +5,7 @@ export default function Header() {
     await signoutWithFirebase();
   };
   return (
-    <div className="flex justify-between items-center py-4 px-8 bg-white shadow-md sticky top-0 z-50">
+    <div className="flex justify-between items-center py-4 px-2 md:px-8 bg-white shadow-md sticky top-0 z-50">
       <div className="flex items-center">
         <img
           src="https://img.icons8.com/color/48/000000/airplane-take-off.png"
@@ -16,7 +16,7 @@ export default function Header() {
           Passengers Flight Details
         </span>
       </div>
-      <div className="flex items-center gap-x-3">
+      <div className="flex items-center gap-x-2">
         <button 
           onClick={() => window.location.href = "/reset-password"}
           className="px-4 py-2 bg-primary text-white font-semibold rounded-lg duration-200 shadow-md hover:bg-hover"
