@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   updatePassword,
   updateProfile,
@@ -25,6 +26,7 @@ const signUpWithFirebase = async (
     const user = await createUserWithEmailAndPassword(auth, email, password);
     if (!user) throw new Error("No user is logged in");
     await updateProfile(user.user, { displayName: name });
+    await sendEmailVerification(user.user);
     return user;
   } catch (error) {
     alert(error);
